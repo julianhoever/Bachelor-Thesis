@@ -1,0 +1,28 @@
+\chapter{Einleitung}
+In diesem einleitenden Kapitel wird im ersten Abschnitt das Thema dieser Arbeit motiviert und dem Leser dessen praktische Relevanz verdeutlicht. Der darauffolgende Abschnitt befasst sich mit der konkreten Aufgabenstellung, welche behandelt wird. Im letzten Abschnitt dieses Kapitels wird der Aufbau der Arbeit beschrieben und die einzelnen Kapitel werden kurz zusammengefasst.
+
+\section{Motivation}
+Maschinelles Lernen wird heutzutage in vielen verschiedenen Bereichen eingesetzt. Besonders im Bereich der mobilen und eingebetteten Systeme werden zunehmend Technologien des maschinellen Lernens verwendet, wie beispielsweise für Aufgaben des computerbasierten Sehens.
+Anwendungsbeispiele für computerbasiertes Sehen (Computer Vision) im Kontext von mobilen und eingebetteten Systemen sind unter anderem Gesichtserkennung, Objekterkennung und selbstfahrende Fahrzeuge.
+
+Spätestens seit dem Durchbruch von AlexNet im Jahr 2012 \cite{krizhevsky_imagenet_2017} haben sich Convolutional Neural Networks, kurz CNNs, im Bereich des computerbasierten Sehens bewährt. Bei AlexNet handelt es sich um eine Architektur eines neuralen Netzwerkes zur Klassifikation von Bildern, welche mittels Faltungsschichten (Convolutional Layern) arbeitet. Jedoch handelt es sich bei AlexNet mit 60 Millionen Parametern um eine sehr große und rechenintensive Architektur, welche Hardware mit vielen Ressourcen benötigt. Aus diesem Grund sind große Architekturen wie AlexNet ungeeignet für das Anwendungsgebiet der mobilen und eingebetteten Systeme, da dort meist die Menge an Ressourcen eingeschränkt ist.
+
+Um dieses Problem abzumildern gibt es optimierte CNN Architekturen, wie zum Beispiel MobileNet oder EfficientNet \cite{howard_mobilenets_2017, sandler_mobilenetv2_2019, howard_searching_2019, tan_efficientnet_2020}, welche bestimmte architekturelle Optimierungen vornehmen, die die Anzahl an Parameter und damit auch den Rechen- und Speicheraufwand verringern. Damit ist es möglich Convolutional Neural Networks auf Hardware mit beschränkten Ressourcen wie Smartphones zu verwenden. Aber trotzdem ist diese Art von Architekturen teilweise ungeeignet für sehr kleine eingebettete Systeme oder leistungsschwache Mobilgeräte, da sie Millionen von Parametern besitzen. Zum Beispiel hat die kleinste EfficientNet Variante (Efficient-B0) immer noch 5.3 Millionen Parameter \cite{tan_efficientnet_2020}.
+
+Mögliche Ansätze, um den Speicher- und Rechenaufwand dieser optimierten Architekturen weiter zu minimieren, sind die Optimierungstechniken Quantisierung und Pruning. Bei der Quantisierung geht es darum die Anzahl an Bits, mit dem ein Modell arbeitet, zu reduzieren. Dadurch wird der Speicherbedarf gesenkt und die Performance der Netzwerke bezogen auf Inferenzgeschwindigkeit gesenkt \cite{jacob_quantization_2017}. Eine weitere Optimierungstechnik, welche oftmals in Kombination mit Quantisierung verwendet wird, ist das Pruning \cite{zhu_prune_2017}. Beim Pruning werden nachträglich für eine gegebene Architektur unwichtige Verbindungen getrennt. Damit verbleiben nur die wichtigen Verbindungen für die Aufgabe, für die die Architektur trainiert worden ist und die Architektur wird kleiner.
+
+Durch die Kombination beider Techniken können solche Architekturen stark verkleinert werden. Dies macht Quantisierung und Pruning im Kontext von mobilen und eingebetteten Systemen attraktiv, da geringer Speicherbedarf und eine hohe Inferenzgeschwindigkeit in diesen Bereichen von entscheidender Bedeutung sind. Die Kosten für die verkleinerten Architekturen durch Anwendung dieser Optimierungstechniken sind meist eine verringerte Genauigkeit dieser Architekturen \cite{jacob_quantization_2017, zhu_prune_2017, hooker_what_2020}.
+
+\section{Aufgabenstellung}
+In dieser Arbeit soll untersucht werden, inwieweit sich die Optimierungstechniken Quantisierung und Pruning auf ausgewählte Netzwerkarchitekturen für eingebettete und mobile Systeme auswirken. 
+
+Dazu sollen als Erstes mit Bezug auf aktuelle Forschung die Techniken Quantisierung und Pruning in geeigneter Weise auf die vorgestellten Netzwerkarchitekturen angewendet werden. Als Nächstes soll durch eine vergleichende Analyse der Netzwerkarchitekturen vor und nach der Anwendung von Quantisierung und Pruning untersucht werden, wie kompatibel die Besonderheiten der Netzwerkarchitekturen mit den angewendeten Techniken sind. Für diese Analyse soll ein Evaluationsverfahren entwickelt werden, welches diese Art von Rückschlüssen erlaubt.
+
+\section{Aufbau der Arbeit}
+Um diese Aufgabenstellung zu bearbeiten, werden zu Beginn der Arbeit in Kapitel 2 die benötigten Grundlagen und die in dieser Arbeit betrachteten Architekturen vorgestellt. 
+
+In Kapitel 3 wird das grundsätzliche Vorgehen beschrieben, wie die einzelnen Netzwerkarchitekturen für die Evaluation trainiert und optimiert werden. Zusätzlich beschreibt Kapitel 3 wie in dieser Arbeit das Training und die Optimierungstechniken Quantisierung und Pruning angewendet und implementiert wurden. 
+
+In Kapitel 4 werden die, aus der Implementierung in Kapitel 3, resultierenden Ergebnisse betrachtet und analysiert, inwieweit sich die Optimierungstechniken Quantisierung und Pruning auf die Netzwerkarchitekturen auswirken. Außerdem werden im Kapitel 4 mögliche Optimierungen vorgestellt, um eine Quantisierung und Pruning dieser Netzwerkarchitekturen zu verbessern. Zusätzlich wird kurz diskutiert, welche Architekturen sich am besten für die Aufgabe der Bildklassifikation auf dem CIFAR-10 Datensatz eignen.
+
+Zum Schluss folgt im Kapitel 5 eine Zusammenfassung mit Ausblick wo die Erkenntnisse dieser Arbeit kurz zusammengefasst werden und mögliche weiterführende Arbeiten vorgestellt werden.

@@ -1,0 +1,120 @@
+#!/bin/bash
+
+# Result folders
+TFLITE_INIT=tflite_files/initial
+TFLITE_QUANT=tflite_files/quantized
+TFLITE_PRU=tflite_files/pruned
+TFLITE_PRU_QUANT=tflite_files/pruned_quantized
+
+
+# Pretrained model folders
+PRE_MNV1=saved_models/pretrained/mobilenetv1_20210203-080705/mobilenetv1_pretrained.h5
+PRE_MNV2=saved_models/pretrained/mobilenetv2_20210203-085938/mobilenetv2_pretrained.h5
+PRE_MNV3_LARGE=saved_models/pretrained/mobilenetv3_large_20210203-102728/mobilenetv3_large_pretrained.h5
+PRE_MNV3_SMALL=saved_models/pretrained/mobilenetv3_small_20210203-121017/mobilenetv3_small_pretrained.h5
+PRE_ENB0=saved_models/pretrained/efficientnet-b0_20210203-132025/efficientnet-b0_pretrained.h5
+
+PRE_MNV3_LARGE_MINI=saved_models/pretrained/mobilenetv3_large_minimalistic_20210224-114751/mobilenetv3_large_minimalistic_pretrained.h5
+PRE_MNV3_SMALL_MINI=saved_models/pretrained/mobilenetv3_small_minimalistic_20210224-124800/mobilenetv3_small_minimalistic_pretrained.h5
+
+# Pruned model folders
+PRU_30_MNV1=saved_models/pruned/mobilenetv1_s0.3_20210203-152953/mobilenetv1_pruned.h5
+PRU_60_MNV1=saved_models/pruned/mobilenetv1_s0.6_20210203-153218/mobilenetv1_pruned.h5
+PRU_90_MNV1=saved_models/pruned/mobilenetv1_s0.9_20210203-153826/mobilenetv1_pruned.h5
+
+PRU_30_MNV2=saved_models/pruned/mobilenetv2_s0.3_20210203-160122/mobilenetv2_pruned.h5
+PRU_60_MNV2=saved_models/pruned/mobilenetv2_s0.6_20210203-160416/mobilenetv2_pruned.h5
+PRU_90_MNV2=saved_models/pruned/mobilenetv2_s0.9_20210203-161135/mobilenetv2_pruned.h5
+
+PRU_30_MNV3_LARGE=saved_models/pruned/mobilenetv3_large_s0.3_20210203-163851/mobilenetv3_large_pruned.h5
+PRU_60_MNV3_LARGE=saved_models/pruned/mobilenetv3_large_s0.6_20210203-164221/mobilenetv3_large_pruned.h5
+PRU_90_MNV3_LARGE=saved_models/pruned/mobilenetv3_large_s0.9_20210203-165057/mobilenetv3_large_pruned.h5
+
+PRU_30_MNV3_SMALL=saved_models/pruned/mobilenetv3_small_s0.3_20210203-172241/mobilenetv3_small_pruned.h5
+PRU_60_MNV3_SMALL=saved_models/pruned/mobilenetv3_small_s0.6_20210203-172458/mobilenetv3_small_pruned.h5
+PRU_90_MNV3_SMALL=saved_models/pruned/mobilenetv3_small_s0.9_20210203-173030/mobilenetv3_small_pruned.h5
+
+PRU_30_ENB0=saved_models/pruned/efficientnet-b0_s0.3_20210204-163715/efficientnet-b0_pruned.h5
+PRU_60_ENB0=saved_models/pruned/efficientnet-b0_s0.6_20210203-175449/efficientnet-b0_pruned.h5
+PRU_90_ENB0=saved_models/pruned/efficientnet-b0_s0.9_20210203-180520/efficientnet-b0_pruned.h5
+
+PRU_30_MNV3_LARGE_MINI=saved_models/pruned/mobilenetv3_large_minimalistic_s0.3_20210224-133137/mobilenetv3_large_minimalistic_pruned.h5
+PRU_60_MNV3_LARGE_MINI=saved_models/pruned/mobilenetv3_large_minimalistic_s0.6_20210224-133410/mobilenetv3_large_minimalistic_pruned.h5
+PRU_90_MNV3_LARGE_MINI=saved_models/pruned/mobilenetv3_large_minimalistic_s0.9_20210224-134033/mobilenetv3_large_minimalistic_pruned.h5
+
+PRU_30_MNV3_SMALL_MINI=saved_models/pruned/mobilenetv3_small_minimalistic_s0.3_20210224-140406/mobilenetv3_small_minimalistic_pruned.h5
+PRU_60_MNV3_SMALL_MINI=saved_models/pruned/mobilenetv3_small_minimalistic_s0.6_20210224-140541/mobilenetv3_small_minimalistic_pruned.h5
+PRU_90_MNV3_SMALL_MINI=saved_models/pruned/mobilenetv3_small_minimalistic_s0.9_20210224-140938/mobilenetv3_small_minimalistic_pruned.h5
+
+
+# Quantize all models
+python3 quantize_model.py mobilenetv1 $PRE_MNV1 $TFLITE_QUANT/mobilenetv1.tflite
+python3 quantize_model.py mobilenetv1 $PRU_30_MNV1 $TFLITE_PRU_QUANT/mobilenetv1_s30.tflite
+python3 quantize_model.py mobilenetv1 $PRU_60_MNV1 $TFLITE_PRU_QUANT/mobilenetv1_s60.tflite
+python3 quantize_model.py mobilenetv1 $PRU_90_MNV1 $TFLITE_PRU_QUANT/mobilenetv1_s90.tflite
+
+python3 quantize_model.py mobilenetv2 $PRE_MNV2 $TFLITE_QUANT/mobilenetv2.tflite
+python3 quantize_model.py mobilenetv2 $PRU_30_MNV2 $TFLITE_PRU_QUANT/mobilenetv2_s30.tflite
+python3 quantize_model.py mobilenetv2 $PRU_60_MNV2 $TFLITE_PRU_QUANT/mobilenetv2_s60.tflite
+python3 quantize_model.py mobilenetv2 $PRU_90_MNV2 $TFLITE_PRU_QUANT/mobilenetv2_s90.tflite
+
+python3 quantize_model.py mobilenetv3_large $PRE_MNV3_LARGE $TFLITE_QUANT/mobilenetv3_large.tflite
+python3 quantize_model.py mobilenetv3_large $PRU_30_MNV3_LARGE $TFLITE_PRU_QUANT/mobilenetv3_large_s30.tflite
+python3 quantize_model.py mobilenetv3_large $PRU_60_MNV3_LARGE $TFLITE_PRU_QUANT/mobilenetv3_large_s60.tflite
+python3 quantize_model.py mobilenetv3_large $PRU_90_MNV3_LARGE $TFLITE_PRU_QUANT/mobilenetv3_large_s90.tflite
+
+python3 quantize_model.py mobilenetv3_small $PRE_MNV3_SMALL $TFLITE_QUANT/mobilenetv3_small.tflite
+python3 quantize_model.py mobilenetv3_small $PRU_30_MNV3_SMALL $TFLITE_PRU_QUANT/mobilenetv3_small_s30.tflite
+python3 quantize_model.py mobilenetv3_small $PRU_60_MNV3_SMALL $TFLITE_PRU_QUANT/mobilenetv3_small_s60.tflite
+python3 quantize_model.py mobilenetv3_small $PRU_90_MNV3_SMALL $TFLITE_PRU_QUANT/mobilenetv3_small_s90.tflite
+
+python3 quantize_model.py efficientnet-b0 $PRE_ENB0 $TFLITE_QUANT/efficientnet-b0.tflite
+python3 quantize_model.py efficientnet-b0 $PRU_30_ENB0 $TFLITE_PRU_QUANT/efficientnet-b0_s30.tflite
+python3 quantize_model.py efficientnet-b0 $PRU_60_ENB0 $TFLITE_PRU_QUANT/efficientnet-b0_s60.tflite
+python3 quantize_model.py efficientnet-b0 $PRU_90_ENB0 $TFLITE_PRU_QUANT/efficientnet-b0_s90.tflite
+
+python3 quantize_model.py mobilenetv3_large_minimalistic $PRE_MNV3_LARGE_MINI $TFLITE_QUANT/mobilenetv3_large_minimalistic.tflite
+python3 quantize_model.py mobilenetv3_large_minimalistic $PRU_30_MNV3_LARGE_MINI $TFLITE_PRU_QUANT/mobilenetv3_large_minimalistic_s30.tflite
+python3 quantize_model.py mobilenetv3_large_minimalistic $PRU_60_MNV3_LARGE_MINI $TFLITE_PRU_QUANT/mobilenetv3_large_minimalistic_s60.tflite
+python3 quantize_model.py mobilenetv3_large_minimalistic $PRU_90_MNV3_LARGE_MINI $TFLITE_PRU_QUANT/mobilenetv3_large_minimalistic_s90.tflite
+
+python3 quantize_model.py mobilenetv3_small_minimalistic $PRE_MNV3_SMALL_MINI $TFLITE_QUANT/mobilenetv3_small_minimalistic.tflite
+python3 quantize_model.py mobilenetv3_small_minimalistic $PRU_30_MNV3_SMALL_MINI $TFLITE_PRU_QUANT/mobilenetv3_small_minimalistic_s30.tflite
+python3 quantize_model.py mobilenetv3_small_minimalistic $PRU_60_MNV3_SMALL_MINI $TFLITE_PRU_QUANT/mobilenetv3_small_minimalistic_s60.tflite
+python3 quantize_model.py mobilenetv3_small_minimalistic $PRU_90_MNV3_SMALL_MINI $TFLITE_PRU_QUANT/mobilenetv3_small_minimalistic_s90.tflite
+
+# Convert full res models to tflite format
+python3 model_to_tflite.py $PRE_MNV1 $TFLITE_INIT/mobilenetv1.tflite
+python3 model_to_tflite.py $PRU_30_MNV1 $TFLITE_PRU/mobilenetv1_s30.tflite
+python3 model_to_tflite.py $PRU_60_MNV1 $TFLITE_PRU/mobilenetv1_s60.tflite
+python3 model_to_tflite.py $PRU_90_MNV1 $TFLITE_PRU/mobilenetv1_s90.tflite
+
+python3 model_to_tflite.py $PRE_MNV2 $TFLITE_INIT/mobilenetv2.tflite
+python3 model_to_tflite.py $PRU_30_MNV2 $TFLITE_PRU/mobilenetv2_s30.tflite
+python3 model_to_tflite.py $PRU_60_MNV2 $TFLITE_PRU/mobilenetv2_s60.tflite
+python3 model_to_tflite.py $PRU_90_MNV2 $TFLITE_PRU/mobilenetv2_s90.tflite
+
+python3 model_to_tflite.py $PRE_MNV3_LARGE $TFLITE_INIT/mobilenetv3_large.tflite
+python3 model_to_tflite.py $PRU_30_MNV3_LARGE $TFLITE_PRU/mobilenetv3_large_s30.tflite
+python3 model_to_tflite.py $PRU_60_MNV3_LARGE $TFLITE_PRU/mobilenetv3_large_s60.tflite
+python3 model_to_tflite.py $PRU_90_MNV3_LARGE $TFLITE_PRU/mobilenetv3_large_s90.tflite
+
+python3 model_to_tflite.py $PRE_MNV3_SMALL $TFLITE_INIT/mobilenetv3_small.tflite
+python3 model_to_tflite.py $PRU_30_MNV3_SMALL $TFLITE_PRU/mobilenetv3_small_s30.tflite
+python3 model_to_tflite.py $PRU_60_MNV3_SMALL $TFLITE_PRU/mobilenetv3_small_s60.tflite
+python3 model_to_tflite.py $PRU_90_MNV3_SMALL $TFLITE_PRU/mobilenetv3_small_s90.tflite
+
+python3 model_to_tflite.py $PRE_ENB0 $TFLITE_INIT/efficientnet-b0.tflite
+python3 model_to_tflite.py $PRU_30_ENB0 $TFLITE_PRU/efficientnet-b0_s30.tflite
+python3 model_to_tflite.py $PRU_60_ENB0 $TFLITE_PRU/efficientnet-b0_s60.tflite
+python3 model_to_tflite.py $PRU_90_ENB0 $TFLITE_PRU/efficientnet-b0_s90.tflite
+
+python3 model_to_tflite.py $PRE_MNV3_LARGE_MINI $TFLITE_INIT/mobilenetv3_large_minimalistic.tflite
+python3 model_to_tflite.py $PRU_30_MNV3_LARGE_MINI $TFLITE_PRU/mobilenetv3_large_minimalistic_s30.tflite
+python3 model_to_tflite.py $PRU_60_MNV3_LARGE_MINI $TFLITE_PRU/mobilenetv3_large_minimalistic_s60.tflite
+python3 model_to_tflite.py $PRU_90_MNV3_LARGE_MINI $TFLITE_PRU/mobilenetv3_large_minimalistic_s90.tflite
+
+python3 model_to_tflite.py $PRE_MNV3_SMALL_MINI $TFLITE_INIT/mobilenetv3_small_minimalistic.tflite
+python3 model_to_tflite.py $PRU_30_MNV3_SMALL_MINI $TFLITE_PRU/mobilenetv3_small_minimalistic_s30.tflite
+python3 model_to_tflite.py $PRU_60_MNV3_SMALL_MINI $TFLITE_PRU/mobilenetv3_small_minimalistic_s60.tflite
+python3 model_to_tflite.py $PRU_90_MNV3_SMALL_MINI $TFLITE_PRU/mobilenetv3_small_minimalistic_s90.tflite

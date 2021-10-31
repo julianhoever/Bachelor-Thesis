@@ -1,0 +1,16 @@
+%\setcounter{page}{2}
+
+\cleardoublepage
+
+
+
+\section*{Kurzfassung}
+Modelle des maschinellen Lernens wurden in den letzten Jahren zum Lösen von immer mehr Problemen eingesetzt. Besonders neuronale Netzwerke spielen dabei eine zunehmend wichtige Rolle. Um diese neuronalen Netze, welche meist sehr groß und ressourcenintensiv sind, auf eingebetteten und mobilen Plattformen einsetzen zu können, sind spezielle, für diesen Anwendungsbereich, optimierte Netzwerkarchitekturen notwendig. Die Netzwerkarchitekturen für mobile und eingebettete Systeme wenden dazu häufig architekturelle Veränderungen an, wie zum Beispiel den Einsatz von Depthwise Separable Convolutions oder der Einsatz von Squeeze-And-Excitation Modulen, um eine gesteigerte Effizienz zu erreichen.
+
+Diese Arbeit stellt dazu eine Auswahl an Netzwerkarchitekturen vor, die für den Anwendungsbereich der Bildverarbeitung auf mobilen und eingebetteten Systeme geeignet sind. Dabei handelt es sich im Wesentlichen um die Architekturen MobileNet, MobileNetV2, MobileNetV3 Large/Small und EfficientNet. Die vorgestellten Architekturen werden auf dem CIFAR-10 Datensatz trainiert und miteinander verglichen. Außerdem werden in dieser Arbeit die Optimierungstechniken Quantisierung und Pruning vorgestellt und systematisch auf die Netzwerkarchitekturen angewendet. Es soll ermittelt werden wie sich diese Architekturen und die architekturellen Optimierungen unter Anwendung von Quantisierung und Pruning verhalten. Für das Pruning der Architekturen wird in dieser Arbeit ein einfaches Magnitude Pruning verwendet und für die Quantisierung wird eine Post-Training Quantisierung angewendet. Die resultierenden Modelle werden für die Evaluation auf einem Raspberry Pi 4 ausgewertet.
+
+Im Verlauf der Evaluation hat sich herausgestellt, dass sich der Speicherbedarf der Modelle, allein durch die Anwendung von Quantisierung, deutlich reduzieren lässt und das teilweise ohne einen Verlust an Genauigkeit. Zusätzlich ist es durch eine Kombination aus Pruning und einem Kompressionsalgorithmus wie gzip möglich, Modelle sehr stark zu komprimieren. Die kleinsten Modelle konnten in dieser Arbeit durch eine Kombination aus Pruning, Quantisierung und der Anwendung von gzip erreicht werden. Durch die Anwendung dieser Kombination konnte der Hintergrundspeicherbedarf der Modelle im Durchschnitt bis zu 91.65\% verringert werden. Um die Auswirkungen der Optimierungstechniken Quantisierung und Pruning zu untersuchen wurde als weitere Metrik die klassenweise Genauigkeit \cite{hooker_what_2020} vorgestellt und exemplarisch an der MobileNet und EfficientNet-B0 Architektur evaluiert. Dabei wurde gezeigt, dass sich der Verlust durch Pruning und Quantisierung ungleichmäßig auf die einzelnen Klassen auswirkt und somit unbedingt beachtet werden sollte, um die Qualität eines geprunten oder quantisierten Modells zu bewerten. Als letztes wurden anhand der MobileNetV3 Minimalistic Architekturen mögliche architekturelle Optimierungen betrachtet, um die vorgestellten Netzwerkarchitekturen bezüglich der Inferenzzeit und der Quantisierbarkeit zu optimieren.
+
+
+
+\cleardoublepage

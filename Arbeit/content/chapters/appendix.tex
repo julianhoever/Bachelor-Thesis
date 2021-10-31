@@ -1,0 +1,37 @@
+\chapter{Anhang}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{llp{1.5cm}lll}
+\toprule
+Architekturen & Sparsity & Exakte Sparsity & Datei [MB] &  RAM [MB]  & Inferenz [µs]   \\
+\midrule
+MobileNet & 0\% &           0.00\% &     12.8453 &   16.1016 &          11803 \\
+                & 30\% &          25.53\% &     12.8453 &   16.2148 &          11392 \\
+                & 60\% &          56.21\% &     12.8453 &   16.1289 &          11594 \\
+                & 90\% &          86.18\% &     12.8451 &   16.0625 &          11303 \\
+\midrule
+MobileNetV2 & 0\% &           0.00\% &      8.9153 &   11.2148 &           4961 \\
+                & 30\% &          24.72\% &      8.9153 &   11.2656 &           4972 \\
+                & 60\% &          54.41\% &      8.9153 &   11.2891 &           4933 \\
+                & 90\% &          83.43\% &      8.9153 &   11.2617 &           4948 \\
+\midrule
+MobileNetV3 Large & 0\% &           0.00\% &     16.8829 &   20.4141 &           8051 \\
+                & 30\% &          25.34\% &     16.8829 &   20.4180 &           7992 \\
+                & 60\% &          55.78\% &     16.8829 &   20.3750 &           8098 \\
+                & 90\% &          85.53\% &     16.8829 &   20.4727 &           8048 \\
+\midrule
+MobileNetV3 Small & 0\% &           0.00\% &      6.1536 &    8.5859 &           2954 \\
+                & 30\% &          24.77\% &      6.1536 &    8.6211 &           2914 \\
+                & 60\% &          54.52\% &      6.1536 &    8.6016 &           2959 \\
+                & 90\% &          83.60\% &      6.1536 &    8.5898 &           2913 \\
+\midrule
+EfficientNet-B0 & 0\% &           0.00\% &     16.0860 &   16.6719 &          12453 \\
+                & 30\% &          24.47\% &     16.0860 &   16.6484 &          12225 \\
+                & 60\% &          53.86\% &     16.0860 &   16.5273 &          12376 \\
+                & 90\% &          82.59\% &     16.0860 &   16.4492 &          12237 \\
+\bottomrule
+\end{tabular}
+\caption{Zusammenfassung der exakten Sparsity, Dateigröße, Hauptspeicherbedarf und Inferenzzeit für die geprunten und unquantisierten Modelle}
+\label{tA.1}
+\end{table}
